@@ -3,9 +3,20 @@ const { ApolloServer, gql } = require('apollo-server-express');
 import { DB, PORT } from './config';
 import {success, error} from 'consola';
 import {typeDefs, resolvers} from './graphql';
+const client = require('./database')
+
+// POSTGRESQL CONNECTION
+client.connect();
+
+client.query('select * from userpostdemo', (err, result) => {
+    if(!err) {
+        console.log(result.rows);
+    }
+    client.end();
+})
 
 
-
+// APOLLO SERVER
 const server = new ApolloServer({ 
     typeDefs, 
     resolvers, 
