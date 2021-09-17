@@ -5,6 +5,16 @@ export default gql `
       getAllPosts: [Post!]!   
     },
 
+    extend type Mutation {
+      createNewPost(newPost: NewPost): Post!
+    }
+
+    input NewPost{
+      title: String!
+      content: String!
+      featuredImage: String
+    }
+
     type Post {
         title: String!
         content: String!

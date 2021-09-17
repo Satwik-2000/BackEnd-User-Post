@@ -10,5 +10,16 @@ export default {
             }
         ]
         }
+    },
+    Mutation: {
+        createNewPost: async (_, args, context, info) => {
+            console.log("_", _);
+            console.log("ARGS", args);
+            console.log("INFO", info);
+            return {
+                title: "Hello World",
+                content: "Welcome to Kredent InfoEdge."
+            }
+        }
     }
 }
